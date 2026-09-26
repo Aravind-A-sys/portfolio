@@ -1,710 +1,675 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="paper">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Aravind A — Principal Engineer II | Technical Lead | .NET & Azure</title>
-<meta name="description" content="Principal Engineer II and Technical Lead with 7+ years of experience in .NET, Azure, enterprise application modernization, and API architecture. Chennai, India." />
+<title>ARAVIND A — Principal Engineer II · Technical Drawing No. AA-2026-001</title>
+<meta name="description" content="Aravind A — Principal Engineer II / Technical Lead. 7+ years in .NET, Azure and enterprise modernization. Chennai, India." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
+  /* ============ ENGINEERING DRAWING SYSTEM ============ */
   :root {
-    --bg: #0a0e1a;
-    --bg-2: #0f1526;
-    --card: #121a2e;
-    --card-hover: #17203a;
-    --border: #1e2a45;
-    --text: #e2e8f0;
-    --muted: #8b98b5;
-    --accent: #22d3ee;
-    --accent-2: #a78bfa;
-    --accent-grad: linear-gradient(90deg, #22d3ee, #a78bfa);
-    --mono: 'Cascadia Code', 'Fira Code', Consolas, monospace;
-    --sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    --glow-1: rgba(34, 211, 238, .08);
-    --glow-2: rgba(167, 139, 250, .08);
-    --shadow: rgba(0,0,0,.35);
+    --paper: #f4f1ea;
+    --paper-2: #ece8de;
+    --ink: #1a1c1e;
+    --ink-soft: #4c4f52;
+    --line: #26282b;
+    --line-soft: #b9b3a4;
+    --accent: #c2401c;         /* marker red */
+    --accent-ink: #a33415;
+    --grid: rgba(26,28,30,.055);
+    --grid-strong: rgba(26,28,30,.12);
+    --sheet-shadow: 0 1px 0 rgba(0,0,0,.04), 0 18px 40px -22px rgba(26,28,30,.35);
   }
-  [data-theme="light"] {
-    --bg: #f6f8fc;
-    --bg-2: #eef2f9;
-    --card: #ffffff;
-    --card-hover: #f3f6fc;
-    --border: #d8e0ee;
-    --text: #16213a;
-    --muted: #5a6a8a;
-    --accent: #0891b2;
-    --accent-2: #7c3aed;
-    --accent-grad: linear-gradient(90deg, #0891b2, #7c3aed);
-    --glow-1: rgba(8, 145, 178, .07);
-    --glow-2: rgba(124, 58, 237, .06);
-    --shadow: rgba(30, 50, 90, .12);
+  [data-theme="blueprint"] {
+    --paper: #0d2036;
+    --paper-2: #0a1a2c;
+    --ink: #e8f1f8;
+    --ink-soft: #9db4c8;
+    --line: #dfeefb;
+    --line-soft: #3c5a78;
+    --accent: #ffd166;
+    --accent-ink: #ffd166;
+    --grid: rgba(232,241,248,.05);
+    --grid-strong: rgba(232,241,248,.12);
+    --sheet-shadow: none;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
   body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    line-height: 1.6;
-    overflow-x: hidden;
-    transition: background .35s ease, color .35s ease;
+    background: var(--paper);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+      linear-gradient(var(--grid-strong) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-strong) 1px, transparent 1px);
+    background-size: 12px 12px, 12px 12px, 60px 60px, 60px 60px;
+    color: var(--ink);
+    font-family:'Archivo', system-ui, sans-serif;
+    line-height:1.5;
+    transition: background-color .3s ease, color .3s ease;
+    overflow-x:hidden;
   }
-  ::selection { background: rgba(34, 211, 238, .3); }
+  ::selection { background: var(--accent); color: var(--paper); }
+  .mono { font-family:'IBM Plex Mono', monospace; }
 
-  /* theme toggle */
-  .theme-toggle {
-    background: var(--card); border: 1px solid var(--border); border-radius: 999px;
-    width: 42px; height: 42px; cursor: pointer; font-size: 1.15rem;
-    display: inline-flex; align-items: center; justify-content: center;
-    transition: transform .25s, border-color .2s;
-  }
-  .theme-toggle:hover { transform: rotate(20deg) scale(1.08); border-color: var(--accent); }
+  /* ---------- progress rule ---------- */
+  #progress { position:fixed; top:0; left:0; height:4px; width:0%; background:var(--accent); z-index:300; }
 
-  /* ---------- NAV ---------- */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0.9rem 6vw;
-    background: rgba(10, 14, 26, .8);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
+  /* ---------- sheet frame ---------- */
+  .sheet { max-width:1240px; margin:0 auto; padding:0 clamp(16px,4vw,48px); position:relative; }
+  .frame-border { border-left:2px solid var(--line); border-right:2px solid var(--line); min-height:100vh; }
+
+  /* ---------- top bar ---------- */
+  header.top {
+    position:sticky; top:0; z-index:100;
+    background:var(--paper);
+    border-bottom:2px solid var(--line);
+    transition: background-color .3s ease;
   }
-  .nav-logo { font-family: var(--mono); font-size: 1.05rem; font-weight: 700; text-decoration: none; }
-  .nav-logo .p1 { color: var(--accent); }
-  .nav-logo .p2 { color: var(--text); }
-  .nav-links { display: flex; gap: 1.6rem; list-style: none; align-items: center; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none; font-size: .92rem; transition: color .2s;
+  .top-inner {
+    max-width:1240px; margin:0 auto; padding:14px clamp(16px,4vw,48px);
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
   }
-  .nav-links a:hover { color: var(--accent); }
-  .nav-cta {
-    font-family: var(--mono); font-size: .85rem; color: var(--accent) !important;
-    border: 1px solid var(--accent); border-radius: 6px; padding: .35rem .9rem;
+  .dwg-no { font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.06em; }
+  .dwg-no b { color:var(--accent); }
+  nav.links { display:flex; gap:clamp(10px,2vw,26px); align-items:center; }
+  nav.links a {
+    font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.08em;
+    color:var(--ink-soft); text-decoration:none; text-transform:uppercase;
+    padding:4px 2px; border-bottom:2px solid transparent;
+  }
+  nav.links a:hover { color:var(--ink); border-bottom-color:var(--accent); }
+  #themeToggle {
+    font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.1em;
+    background:none; border:2px solid var(--line); color:var(--ink);
+    padding:7px 12px; cursor:pointer; text-transform:uppercase;
     transition: background .2s, color .2s;
   }
-  .nav-cta:hover { background: rgba(34, 211, 238, .1); }
-  @media (max-width: 760px) { .nav-links li:not(:last-child) { display: none; } }
+  #themeToggle:hover { background:var(--ink); color:var(--paper); }
+  @media (max-width:860px){ nav.links a:not(.keep){ display:none; } }
 
-  /* ---------- HERO ---------- */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding: 7rem 6vw 4rem;
-    position: relative;
+  /* ---------- hero ---------- */
+  .hero { padding:clamp(48px,9vh,96px) 0 40px; border-bottom:2px solid var(--line); position:relative; }
+  .kicker-row { display:flex; justify-content:space-between; align-items:baseline; font-family:'IBM Plex Mono',monospace; font-size:.75rem; letter-spacing:.12em; color:var(--ink-soft); text-transform:uppercase; margin-bottom:26px; }
+  .kicker-row .dot { color:var(--accent); }
+  h1.title {
+    font-size:clamp(3rem,11vw,7.5rem); line-height:.94; font-weight:900;
+    letter-spacing:-.02em; text-transform:uppercase;
   }
-  .hero::before {
-    content: ''; position: absolute; inset: 0;
-    background:
-      radial-gradient(600px 300px at 15% 20%, rgba(34, 211, 238, .08), transparent),
-      radial-gradient(700px 400px at 85% 80%, rgba(167, 139, 250, .08), transparent);
-    pointer-events: none;
+  h1.title .outline {
+    color:transparent; -webkit-text-stroke:2px var(--ink);
   }
-  .hero-inner { position: relative; max-width: 980px; }
-
-  /* hero layout with photo */
-  .hero-flex { display: flex; align-items: center; gap: 3.5rem; }
-  .hero-flex .hero-copy { flex: 1; min-width: 0; }
-  @media (max-width: 900px) {
-    .hero-flex { flex-direction: column-reverse; text-align: center; gap: 2.2rem; }
-    .hero-actions, .hero-stats { justify-content: center; }
-    .hero-tag { margin-left: auto; margin-right: auto; }
+  .role-row {
+    margin-top:22px; display:flex; flex-wrap:wrap; gap:14px 28px; align-items:center;
+    font-family:'IBM Plex Mono',monospace; font-size:clamp(.85rem,2vw,1.05rem);
   }
-  .photo-wrap { position: relative; flex-shrink: 0; width: 240px; height: 240px; }
-  @media (max-width: 900px) { .photo-wrap { width: 190px; height: 190px; } }
-  .photo-ring {
-    position: absolute; inset: -6px; border-radius: 50%;
-    background: conic-gradient(from 0deg, #22d3ee, #a78bfa, #f472b6, #22d3ee);
-    animation: spin 7s linear infinite;
+  .role-row .lead { background:var(--accent); color:var(--paper); padding:4px 10px; font-weight:600; }
+  .hero-grid { display:grid; grid-template-columns:1fr 300px; gap:clamp(24px,4vw,56px); align-items:end; }
+  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } .photo-fig{ justify-self:center; } }
+  .blurb { margin-top:26px; max-width:56ch; color:var(--ink-soft); font-size:1.02rem; }
+  .blurb b { color:var(--ink); }
+  .dim {
+    margin-top:34px; display:flex; align-items:center; gap:10px;
+    font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--ink-soft);
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  .photo-wrap img {
-    position: relative; width: 100%; height: 100%; object-fit: cover;
-    border-radius: 50%; border: 5px solid var(--bg);
-    display: block; animation: float 5s ease-in-out infinite;
-  }
-  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
-  .photo-dot {
-    position: absolute; bottom: 12px; right: 12px; width: 34px; height: 34px;
-    background: #22c55e; border: 4px solid var(--bg); border-radius: 50%; z-index: 2;
-  }
-  .photo-dot::after {
-    content: ''; position: absolute; inset: -8px; border-radius: 50%;
-    border: 2px solid rgba(34, 197, 94, .6); animation: pulse 2s ease-out infinite;
-  }
-  @keyframes pulse { 0% { transform: scale(.7); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; } }
-
-  /* floating background orbs */
-  .orb { position: fixed; border-radius: 50%; filter: blur(90px); opacity: .5; pointer-events: none; z-index: 0; transition: opacity .4s; }
-  .orb-1 { width: 420px; height: 420px; background: radial-gradient(circle, var(--glow-1), transparent 65%); top: -120px; left: -120px; animation: drift1 26s ease-in-out infinite alternate; }
-  .orb-2 { width: 480px; height: 480px; background: radial-gradient(circle, var(--glow-2), transparent 65%); bottom: -160px; right: -140px; animation: drift2 32s ease-in-out infinite alternate; }
-  @keyframes drift1 { to { transform: translate(90px, 70px) scale(1.15); } }
-  @keyframes drift2 { to { transform: translate(-100px, -80px) scale(1.1); } }
-  nav, section, header.hero, footer { position: relative; z-index: 1; }
-
-  /* scroll progress bar */
-  #progress {
-    position: fixed; top: 0; left: 0; height: 3px; width: 0%; z-index: 200;
-    background: var(--accent-grad); border-radius: 0 2px 2px 0;
-  }
-  .hero-greeting { font-family: var(--mono); color: var(--accent); font-size: 1rem; margin-bottom: 1rem; }
-  .hero h1 {
-    font-size: clamp(2.4rem, 6vw, 4.2rem);
-    font-weight: 800; line-height: 1.1; letter-spacing: -1px;
-  }
-  .hero h1 .grad {
-    background: var(--accent-grad);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .hero-role {
-    font-family: var(--mono);
-    font-size: clamp(1rem, 2.4vw, 1.35rem);
-    color: var(--muted); margin-top: 1.1rem;
-  }
-  .hero-role .cursor { color: var(--accent); animation: blink 1s step-end infinite; }
-  @keyframes blink { 50% { opacity: 0; } }
-  .hero-tag { max-width: 640px; margin-top: 1.6rem; color: var(--muted); font-size: 1.05rem; }
-  .hero-actions { display: flex; gap: 1rem; margin-top: 2.2rem; flex-wrap: wrap; }
+  .dim .rule { flex:1; height:1px; background:var(--line); position:relative; }
+  .dim .rule::before,.dim .rule::after{ content:''; position:absolute; top:-4px; width:1px; height:9px; background:var(--line); }
+  .dim .rule::before{left:0;} .dim .rule::after{right:0;}
+  .cta-row { display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; }
   .btn {
-    display: inline-flex; align-items: center; gap: .5rem;
-    font-family: var(--mono); font-size: .95rem; text-decoration: none;
-    padding: .75rem 1.6rem; border-radius: 8px; transition: transform .15s, box-shadow .2s, background .2s;
+    font-family:'IBM Plex Mono',monospace; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase;
+    text-decoration:none; padding:13px 22px; border:2px solid var(--line); color:var(--ink);
+    position:relative; transition:transform .12s ease, box-shadow .12s ease;
   }
-  .btn:active { transform: scale(.97); }
-  .btn-primary {
-    background: var(--accent-grad); color: #0a0e1a; font-weight: 700;
-  }
-  .btn-primary:hover { box-shadow: 0 0 28px var(--glow-1), 0 0 44px var(--glow-2); }
-  .btn-ghost { border: 1px solid var(--border); color: var(--text); }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); background: rgba(34, 211, 238, .06); }
-  .hero-stats { display: flex; gap: 2.6rem; margin-top: 3.4rem; flex-wrap: wrap; }
-  .stat .num { font-family: var(--mono); font-size: 1.7rem; font-weight: 700; color: var(--accent); }
-  .stat .lbl { color: var(--muted); font-size: .85rem; }
+  .btn.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  [data-theme="blueprint"] .btn.primary { color:#0d2036; }
+  .btn:hover { transform:translate(-2px,-2px); box-shadow:4px 4px 0 var(--ink); }
+  .btn:active { transform:translate(0,0); box-shadow:none; }
 
-  /* ---------- SECTIONS ---------- */
-  section { padding: 5.5rem 6vw; max-width: 1150px; margin: 0 auto; }
-  .sec-head { margin-bottom: 2.8rem; }
-  .sec-kicker { font-family: var(--mono); color: var(--accent); font-size: .9rem; margin-bottom: .5rem; }
-  .sec-title { font-size: clamp(1.7rem, 3.6vw, 2.4rem); font-weight: 800; letter-spacing: -.5px; }
-  .sec-title::after {
-    content: ''; display: block; width: 64px; height: 3px; margin-top: .7rem;
-    background: var(--accent-grad); border-radius: 2px;
+  /* photo as DETAIL A */
+  .photo-fig { position:relative; }
+  .photo-fig .crop {
+    width:min(300px,70vw); aspect-ratio:1; overflow:hidden;
+    border:2px solid var(--line); position:relative; background:var(--paper-2);
+  }
+  .photo-fig img { width:100%; height:100%; object-fit:cover; display:block; filter:grayscale(1) contrast(1.05); transition:filter .35s ease; }
+  .photo-fig:hover img { filter:grayscale(0); }
+  .crop-marks::before,.crop-marks::after{
+    content:''; position:absolute; width:18px; height:18px; pointer-events:none;
+  }
+  .crop-marks::before{ top:-9px; left:-9px; border-top:2px solid var(--accent); border-left:2px solid var(--accent); }
+  .crop-marks::after{ bottom:-9px; right:-9px; border-bottom:2px solid var(--accent); border-right:2px solid var(--accent); }
+  .fig-cap {
+    margin-top:10px; font-family:'IBM Plex Mono',monospace; font-size:.72rem;
+    letter-spacing:.1em; color:var(--ink-soft); display:flex; justify-content:space-between;
+  }
+  .fig-cap b{ color:var(--accent); }
+  .stamp {
+    position:absolute; top:-16px; right:-14px; transform:rotate(8deg);
+    border:3px solid var(--accent); color:var(--accent);
+    font-family:'IBM Plex Mono',monospace; font-size:.7rem; font-weight:600; letter-spacing:.14em;
+    padding:6px 10px; background:var(--paper); text-transform:uppercase;
   }
 
-  /* reveal on scroll */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
-  .reveal.in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
-    .photo-ring, .photo-wrap img, .orb-1, .orb-2, .photo-dot::after { animation: none !important; }
-    html { scroll-behavior: auto; }
+  /* ---------- section chrome ---------- */
+  section { padding:clamp(56px,9vh,110px) 0; border-bottom:2px solid var(--line); position:relative; }
+  .sec-head { display:flex; align-items:baseline; gap:18px; margin-bottom:clamp(28px,5vh,52px); }
+  .sec-no {
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:.9rem;
+    border:2px solid var(--line); padding:6px 12px; color:var(--ink);
   }
+  .sec-title { font-size:clamp(1.6rem,4.5vw,2.6rem); font-weight:800; letter-spacing:-.01em; text-transform:uppercase; }
+  .sec-note { margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--ink-soft); letter-spacing:.1em; text-transform:uppercase; }
+  @media (max-width:700px){ .sec-note{ display:none; } }
 
-  /* ---------- ABOUT ---------- */
-  .about-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 2.4rem; }
-  @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } }
-  .about-text p { color: var(--muted); margin-bottom: 1.1rem; }
-  .about-text strong { color: var(--text); }
-  .about-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-    padding: 1.6rem; align-self: start; position: sticky; top: 90px;
-  }
-  .about-card h3 { font-family: var(--mono); font-size: .95rem; color: var(--accent); margin-bottom: 1rem; }
-  .fact { display: flex; justify-content: space-between; padding: .55rem 0; border-bottom: 1px dashed var(--border); font-size: .92rem; }
-  .fact:last-child { border-bottom: none; }
-  .fact .k { color: var(--muted); }
-  .fact .v { color: var(--text); text-align: right; }
-  .fact .v a { color: var(--accent); text-decoration: none; }
+  .reveal { opacity:0; transform:translateY(16px); transition:opacity .55s ease, transform .55s ease; }
+  .reveal.in { opacity:1; transform:none; }
 
-  /* ---------- SKILLS ---------- */
-  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.3rem; }
-  .skill-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-    padding: 1.4rem; transition: transform .2s, border-color .2s;
+  /* ---------- 01 specification ---------- */
+  .spec-grid { display:grid; grid-template-columns:1.6fr 1fr; gap:clamp(24px,4vw,56px); }
+  @media (max-width:900px){ .spec-grid{ grid-template-columns:1fr; } }
+  .spec-text p { color:var(--ink-soft); margin-bottom:14px; font-size:1rem; max-width:64ch; }
+  .spec-text b { color:var(--ink); }
+  .panel { border:2px solid var(--line); background:var(--paper-2); }
+  .panel .panel-h {
+    font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase;
+    padding:10px 14px; border-bottom:2px solid var(--line); display:flex; justify-content:space-between; color:var(--ink-soft);
   }
-  .skill-card:hover { transform: translateY(-4px); border-color: var(--accent); }
-  .skill-card h3 { font-size: 1rem; margin-bottom: .9rem; display: flex; align-items: center; gap: .55rem; }
-  .skill-card h3 .ico { font-family: var(--mono); color: var(--accent); font-size: .85rem; }
-  .tags { display: flex; flex-wrap: wrap; gap: .5rem; }
-  .tag {
-    font-family: var(--mono); font-size: .78rem; color: var(--muted);
-    background: var(--bg-2); border: 1px solid var(--border);
-    padding: .28rem .7rem; border-radius: 999px; transition: color .2s, border-color .2s;
-  }
-  .skill-card:hover .tag { color: var(--text); }
-  .tag.hot { color: var(--accent); border-color: rgba(34, 211, 238, .4); }
+  .kv { display:grid; grid-template-columns:auto 1fr; font-family:'IBM Plex Mono',monospace; font-size:.8rem; }
+  .kv div { padding:9px 14px; border-bottom:1px solid var(--line-soft); }
+  .kv div:nth-last-child(-n+2){ border-bottom:none; }
+  .kv .k { color:var(--ink-soft); border-right:1px solid var(--line-soft); }
+  .kv .v { font-weight:500; }
+  .kv .v.acc { color:var(--accent-ink); font-weight:600; }
 
-  /* ---------- EXPERIENCE ---------- */
-  .timeline { position: relative; padding-left: 2rem; }
-  .timeline::before {
-    content: ''; position: absolute; left: 7px; top: 6px; bottom: 6px;
-    width: 2px; background: linear-gradient(180deg, var(--accent), var(--accent-2));
-    border-radius: 2px; opacity: .5;
+  /* ---------- 02 parts list ---------- */
+  table.bom { width:100%; border-collapse:collapse; font-family:'IBM Plex Mono',monospace; font-size:.82rem; }
+  .bom th {
+    text-align:left; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft);
+    border-bottom:2px solid var(--line); padding:10px 12px; font-weight:500;
   }
-  .tl-item { position: relative; margin-bottom: 2.6rem; }
-  .tl-item::before {
-    content: ''; position: absolute; left: -2rem; top: .45rem;
-    width: 16px; height: 16px; border-radius: 50%;
-    background: var(--bg); border: 3px solid var(--accent);
+  .bom td { padding:11px 12px; border-bottom:1px solid var(--line-soft); vertical-align:top; }
+  .bom tr.cat td {
+    background:var(--paper-2); font-weight:600; color:var(--ink);
+    border-bottom:1px solid var(--line); font-size:.74rem; letter-spacing:.1em; text-transform:uppercase;
   }
-  .tl-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
-    padding: 1.7rem; transition: border-color .2s;
+  .bom .pn { color:var(--accent-ink); white-space:nowrap; }
+  .bom .qty { color:var(--ink-soft); width:60px; }
+  .bom .desc b{ font-weight:600; }
+  .bom .desc span{ color:var(--ink-soft); }
+
+  /* ---------- 03 revision history ---------- */
+  .rev { border:2px solid var(--line); margin-bottom:26px; background:var(--paper-2); }
+  .rev-head {
+    display:flex; flex-wrap:wrap; gap:10px 22px; align-items:center;
+    padding:16px 20px; border-bottom:2px solid var(--line);
   }
-  .tl-card:hover { border-color: rgba(34, 211, 238, .5); }
-  .tl-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .4rem; }
-  .tl-role { font-size: 1.15rem; font-weight: 700; }
-  .tl-company { color: var(--accent); font-weight: 600; margin-top: .15rem; }
-  .tl-meta { font-family: var(--mono); font-size: .82rem; color: var(--muted); text-align: right; }
-  .tl-meta .badge {
-    display: inline-block; border: 1px solid var(--border); border-radius: 6px;
-    padding: .15rem .6rem; margin-bottom: .4rem;
+  .rev-tag {
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:.8rem;
+    background:var(--ink); color:var(--paper); padding:5px 10px;
   }
-  .tl-bullets { margin-top: 1.1rem; padding-left: 1.2rem; color: var(--muted); }
-  .tl-bullets li { margin-bottom: .45rem; font-size: .95rem; }
-  .tl-bullets li::marker { color: var(--accent); }
-  details.more { margin-top: .9rem; }
+  [data-theme="blueprint"] .rev-tag{ background:var(--accent); color:#0d2036; }
+  .rev-title { font-weight:800; font-size:1.15rem; text-transform:uppercase; letter-spacing:.01em; }
+  .rev-org { color:var(--accent-ink); font-weight:600; }
+  .rev-date { margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:.78rem; color:var(--ink-soft); }
+  .rev-body { display:grid; grid-template-columns:1.5fr 1fr; }
+  @media (max-width:860px){ .rev-body{ grid-template-columns:1fr; } }
+  .rev-body ul { list-style:none; padding:18px 20px; }
+  .rev-body li {
+    position:relative; padding-left:20px; margin-bottom:9px; color:var(--ink-soft); font-size:.93rem;
+  }
+  .rev-body li::before { content:'—'; position:absolute; left:0; color:var(--accent); }
+  .rev-body li b{ color:var(--ink); }
+  .rev-side { border-left:2px solid var(--line); padding:18px 20px; font-family:'IBM Plex Mono',monospace; font-size:.78rem; }
+  @media (max-width:860px){ .rev-side{ border-left:none; border-top:2px solid var(--line); } }
+  .rev-side .row { display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px dashed var(--line-soft); }
+  .rev-side .row:last-child{ border-bottom:none; }
+  .rev-side .k{ color:var(--ink-soft); }
+  details.more { padding:0 20px 18px; }
   details.more summary {
-    cursor: pointer; font-family: var(--mono); font-size: .85rem; color: var(--accent);
-    list-style: none; user-select: none;
+    cursor:pointer; font-family:'IBM Plex Mono',monospace; font-size:.76rem; letter-spacing:.08em;
+    color:var(--accent-ink); text-transform:uppercase; list-style:none; user-select:none;
   }
-  details.more summary::before { content: '+ '; }
-  details.more[open] summary::before { content: '− '; }
-  details.more .tl-bullets { margin-top: .8rem; }
+  details.more summary::before{ content:'+ '; }
+  details.more[open] summary::before{ content:'− '; }
+  details.more ul{ padding:14px 0 0; }
 
-  /* ---------- PROJECT ---------- */
-  .project-card {
-    background: linear-gradient(145deg, var(--card), var(--bg-2));
-    border: 1px solid var(--border); border-radius: 16px; padding: 2.2rem;
-    position: relative; overflow: hidden;
+  /* ---------- 04 assembly ---------- */
+  .assembly { border:2px solid var(--line); background:var(--paper-2); padding:clamp(20px,3vw,36px); }
+  .asm-title { font-size:clamp(1.3rem,3vw,1.9rem); font-weight:800; text-transform:uppercase; margin:8px 0 12px; }
+  .assembly p.lead { color:var(--ink-soft); max-width:70ch; }
+  .flow { margin:30px 0 8px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+  @media (max-width:860px){ .flow{ grid-template-columns:1fr 1fr; } }
+  .flow .stage {
+    border:2px solid var(--line); padding:14px; position:relative; background:var(--paper);
   }
-  .project-card::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(500px 220px at 90% 0%, rgba(167, 139, 250, .1), transparent);
-    pointer-events: none;
+  .flow .stage .no { font-family:'IBM Plex Mono',monospace; font-size:.68rem; color:var(--accent-ink); letter-spacing:.12em; }
+  .flow .stage .nm { font-weight:700; margin-top:4px; font-size:.95rem; }
+  .flow .stage .ds { color:var(--ink-soft); font-size:.8rem; margin-top:4px; }
+  .flow .stage::after{
+    content:'▼'; position:absolute; right:-11px; top:50%; transform:translateY(-50%);
+    color:var(--accent); font-size:.8rem; z-index:2;
   }
-  .project-card .p-kicker { font-family: var(--mono); color: var(--accent-2); font-size: .85rem; }
-  .project-card h3 { font-size: 1.5rem; margin: .5rem 0 1rem; }
-  .project-card p { color: var(--muted); margin-bottom: 1.2rem; max-width: 780px; }
-  .arch-flow {
-    display: flex; align-items: center; gap: .8rem; flex-wrap: wrap;
-    font-family: var(--mono); font-size: .85rem; margin: 1.4rem 0;
-  }
-  .arch-box {
-    background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
-    padding: .55rem 1rem; color: var(--text);
-  }
-  .arch-arrow { color: var(--accent); }
-  .project-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.2rem; margin-top: 1.4rem; }
-  .pm .pm-k { font-family: var(--mono); font-size: .78rem; color: var(--accent); margin-bottom: .3rem; }
-  .pm .pm-v { color: var(--muted); font-size: .9rem; }
+  .flow .stage:last-child::after{ display:none; }
+  @media (max-width:860px){ .flow .stage::after{ display:none; } }
+  .asm-meta { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:0; margin-top:26px; border:2px solid var(--line); }
+  .asm-meta .cell { padding:14px; border-right:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft); }
+  .asm-meta .cell:last-child{ border-right:none; }
+  .asm-meta .k { font-family:'IBM Plex Mono',monospace; font-size:.68rem; letter-spacing:.12em; color:var(--ink-soft); text-transform:uppercase; margin-bottom:5px; }
+  .asm-meta .v { font-size:.9rem; font-weight:600; }
 
-  /* ---------- CLIENT PROJECTS ---------- */
-  .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.6rem; }
-  .proj-card {
-    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
-    padding: 1.8rem; display: flex; flex-direction: column; gap: .85rem;
-    transition: transform .2s, border-color .2s, box-shadow .2s;
-    position: relative; overflow: hidden;
-  }
-  .proj-card::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(320px 150px at 100% 0%, rgba(34, 211, 238, .07), transparent);
-    pointer-events: none;
-  }
-  .proj-card:hover { transform: translateY(-5px); border-color: rgba(34, 211, 238, .55); box-shadow: 0 12px 34px rgba(0,0,0,.35); }
-  .proj-kicker { font-family: var(--mono); font-size: .8rem; color: var(--accent-2); }
-  .proj-card h3 { font-size: 1.25rem; }
-  .proj-meta { font-family: var(--mono); font-size: .8rem; color: var(--muted); }
-  .proj-card p { color: var(--muted); font-size: .95rem; }
-  .proj-card .tl-bullets { margin: 0; }
-  .proj-card .tags { margin-top: auto; padding-top: .4rem; }
+  /* ---------- 05 sub-assemblies ---------- */
+  .sub-grid { display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  @media (max-width:860px){ .sub-grid{ grid-template-columns:1fr; } }
+  .sub-card { border:2px solid var(--line); background:var(--paper-2); padding:24px; position:relative; }
+  .sub-card .pn { font-family:'IBM Plex Mono',monospace; font-size:.72rem; letter-spacing:.12em; color:var(--accent-ink); }
+  .sub-card h3 { font-size:1.25rem; font-weight:800; text-transform:uppercase; margin:8px 0 4px; }
+  .sub-card .meta { font-family:'IBM Plex Mono',monospace; font-size:.75rem; color:var(--ink-soft); margin-bottom:12px; }
+  .sub-card p { color:var(--ink-soft); font-size:.95rem; margin-bottom:12px; }
+  .sub-card ul { list-style:none; }
+  .sub-card li { position:relative; padding-left:18px; margin-bottom:7px; font-size:.9rem; color:var(--ink-soft); }
+  .sub-card li::before { content:'—'; position:absolute; left:0; color:var(--accent); }
+  .chip-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .chip { font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.06em; border:1px solid var(--line); padding:4px 9px; color:var(--ink-soft); }
+  .chip.hot { border-color:var(--accent); color:var(--accent-ink); font-weight:600; }
 
-  /* ---------- EDUCATION + OPEN TO ---------- */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
-  @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } }
-  .panel { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.8rem; }
-  .panel h3 { margin-bottom: 1rem; }
-  .edu-deg { font-weight: 700; }
-  .edu-inst { color: var(--accent); margin-top: .2rem; }
-  .edu-meta { font-family: var(--mono); color: var(--muted); font-size: .85rem; margin-top: .5rem; }
-  .roles { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
-  .roles .tag { font-size: .8rem; }
+  /* ---------- 06 general notes ---------- */
+  .notes { display:grid; grid-template-columns:1.4fr 1fr; gap:26px; }
+  @media (max-width:860px){ .notes{ grid-template-columns:1fr; } }
+  .notes ol { padding:18px 20px 18px 44px; }
+  .notes li { margin-bottom:10px; color:var(--ink-soft); font-size:.95rem; }
+  .notes li b{ color:var(--ink); }
+  .roles-wrap { padding:18px 20px; }
+  .roles { display:flex; flex-wrap:wrap; gap:8px; }
+  .roles .chip.hot { font-size:.74rem; }
 
-  /* ---------- CONTACT ---------- */
-  .contact { text-align: center; padding-bottom: 7rem; }
-  .contact .sec-title::after { margin-left: auto; margin-right: auto; }
-  .contact p { color: var(--muted); max-width: 560px; margin: 1.2rem auto 2.2rem; }
-  .contact-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  /* ---------- 07 approvals / contact ---------- */
+  .approve-grid { display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  @media (max-width:860px){ .approve-grid{ grid-template-columns:1fr; } }
+  .sign-block { border:2px solid var(--line); background:var(--paper-2); display:block; text-decoration:none; color:var(--ink); padding:26px; position:relative; transition:transform .12s ease, box-shadow .12s ease; }
+  .sign-block:hover { transform:translate(-3px,-3px); box-shadow:6px 6px 0 var(--accent); }
+  .sign-block .lbl { font-family:'IBM Plex Mono',monospace; font-size:.7rem; letter-spacing:.12em; color:var(--ink-soft); text-transform:uppercase; }
+  .sign-block .val { font-size:clamp(1.05rem,2.6vw,1.5rem); font-weight:800; margin-top:10px; word-break:break-all; }
+  .sign-block .sig-line { margin-top:22px; border-top:2px dashed var(--line-soft); padding-top:8px; font-family:'IBM Plex Mono',monospace; font-size:.72rem; color:var(--ink-soft); display:flex; justify-content:space-between; }
+  .sign-block .arrow { position:absolute; top:22px; right:22px; font-size:1.2rem; color:var(--accent); }
 
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem 6vw; text-align: center;
-    color: var(--muted); font-size: .85rem; font-family: var(--mono);
+  /* ---------- title block footer ---------- */
+  .tblock { border:2px solid var(--line); margin:0 0 40px; background:var(--paper-2); }
+  .tblock .grid5 { display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1.4fr; }
+  @media (max-width:860px){ .tblock .grid5{ grid-template-columns:1fr 1fr; } }
+  .tblock .cell { padding:12px 14px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .tblock .cell:nth-child(5n){ border-right:none; }
+  @media (max-width:860px){ .tblock .cell{ border-right:1px solid var(--line); } }
+  .tblock .k { font-family:'IBM Plex Mono',monospace; font-size:.64rem; letter-spacing:.14em; color:var(--ink-soft); text-transform:uppercase; }
+  .tblock .v { font-weight:700; font-size:.95rem; margin-top:3px; }
+  .tblock .v.mono { font-family:'IBM Plex Mono',monospace; font-size:.8rem; }
+
+  /* zone markers */
+  .zone { position:fixed; font-family:'IBM Plex Mono',monospace; font-size:.62rem; color:var(--ink-soft); letter-spacing:.2em; z-index:5; user-select:none; }
+  .zone.left { left:8px; top:50%; transform:rotate(180deg) translateY(50%); writing-mode:vertical-rl; }
+  .zone.right { right:8px; top:50%; transform:translateY(-50%); writing-mode:vertical-rl; }
+  @media (max-width:1100px){ .zone{ display:none; } }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
   }
-  footer .heart { color: var(--accent); }
 </style>
 </head>
 <body>
-
 <div id="progress"></div>
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
+<span class="zone left">IF READABILITY OF THIS DRAWING IS IN DOUBT — HIRE THE ENGINEER</span>
+<span class="zone right">DWG NO AA-2026-001 · REV C · SHEET 1 OF 1</span>
 
-<nav>
-  <a class="nav-logo" href="#top"><span class="p1">&lt;</span><span class="p2">aravind</span><span class="p1"> /&gt;</span></a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#project">Featured</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a class="nav-cta" href="#contact">Contact</a></li>
-    <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme" title="Toggle theme">🌙</button></li>
-  </ul>
-</nav>
-
-<header class="hero" id="top">
-  <div class="hero-inner">
-    <div class="hero-flex">
-      <div class="hero-copy">
-        <p class="hero-greeting">// hello world, I'm</p>
-        <h1>Aravind A<span class="grad">.</span></h1>
-        <p class="hero-role">Principal Engineer II | Technical Lead<span class="cursor">▍</span></p>
-        <p class="hero-tag">
-          7+ years building and modernizing enterprise software on the Microsoft stack —
-          C#, .NET, ASP.NET, SQL Server, and Azure. I take legacy systems apart, understand them end-to-end,
-          and rebuild them into modern, scalable, cloud-native architectures.
-        </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#project">View featured project</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/aravind-a-52259617b" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a class="btn btn-ghost" href="mailto:aravindice56@gmail.com">Email me</a>
-        </div>
-      </div>
-      <div class="photo-wrap reveal">
-        <div class="photo-ring"></div>
-        <img src="photo.jpg" alt="Aravind A — Principal Engineer II" width="240" height="240" />
-        <span class="photo-dot" title="Open to work"></span>
-      </div>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><div class="num">7+</div><div class="lbl">Years experience</div></div>
-      <div class="stat"><div class="num">2</div><div class="lbl">Enterprise platforms</div></div>
-      <div class="stat"><div class="num">30+</div><div class="lbl">Technologies</div></div>
-      <div class="stat"><div class="num">∞</div><div class="lbl">Legacy code untangled</div></div>
-    </div>
+<header class="top">
+  <div class="top-inner">
+    <div class="dwg-no">DWG <b>AA-2026-001</b> · REV C</div>
+    <nav class="links">
+      <a href="#spec">Spec</a>
+      <a href="#bom">Parts</a>
+      <a href="#revs">History</a>
+      <a href="#asm">Assembly</a>
+      <a class="keep" href="#contact">Approvals</a>
+      <button id="themeToggle" aria-label="Toggle paper / blueprint theme">Blueprint</button>
+    </nav>
   </div>
 </header>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="sec-head reveal">
-    <p class="sec-kicker">01. whoami</p>
-    <h2 class="sec-title">About Me</h2>
-  </div>
-  <div class="about-grid">
-    <div class="about-text reveal">
-      <p>I am a <strong>Principal Engineer II and Technical Lead</strong> with <strong>7+ years of professional experience</strong> in software engineering, enterprise application development, application modernization, cloud technologies, and technical leadership.</p>
-      <p>My core expertise is in the <strong>Microsoft technology ecosystem</strong> — C#, .NET, ASP.NET, Web APIs, SQL Server, Microsoft Azure, and Azure DevOps — applied across the full software development lifecycle: requirement analysis, technical design, development, code reviews, testing, deployment, production support, and modernization.</p>
-      <p>My recent work has focused on <strong>modernizing large-scale enterprise applications</strong>: moving legacy technologies toward modern .NET and Azure-based architectures, with backend and API development, modular application architecture, Azure App Configuration, Key Vault, Service Bus, Event Grid, Functions, AI Search, CI/CD, and authentication modernization.</p>
-      <p>As a Technical Lead, I work closely with Product Managers, Business Analysts, QA Engineers, Principal Engineers, and developers to translate business requirements into practical, maintainable technical solutions — and I enjoy solving the hard, messy problems nobody else wants to touch.</p>
-      <p><strong>Open to opportunities</strong> in Principal/Senior Software Engineering, .NET, Azure, Backend Engineering, Application Modernization, Cloud Engineering, Solution Architecture, and Technical Leadership.</p>
-    </div>
-    <aside class="about-card reveal">
-      <h3>$ cat profile.txt</h3>
-      <div class="fact"><span class="k">role</span><span class="v">Principal Engineer II</span></div>
-      <div class="fact"><span class="k">also</span><span class="v">Technical Lead</span></div>
-      <div class="fact"><span class="k">location</span><span class="v">Chennai, India</span></div>
-      <div class="fact"><span class="k">focus</span><span class="v">.NET · Azure · Modernization</span></div>
-      <div class="fact"><span class="k">experience</span><span class="v">2019 — 2026</span></div>
-      <div class="fact"><span class="k">degree</span><span class="v">B.Tech IT</span></div>
-      <div class="fact"><span class="k">email</span><span class="v"><a href="mailto:aravindice56@gmail.com">aravindice56@gmail.com</a></span></div>
-      <div class="fact"><span class="k">linkedin</span><span class="v"><a href="https://www.linkedin.com/in/aravind-a-52259617b" target="_blank" rel="noopener">/in/aravind-a-52259617b</a></span></div>
-      <div class="fact"><span class="k">status</span><span class="v" style="color:var(--accent)">● Open to work</span></div>
-    </aside>
-  </div>
-</section>
+<div class="sheet frame-border">
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="sec-head reveal">
-    <p class="sec-kicker">02. skills --list</p>
-    <h2 class="sec-title">Technical Skills</h2>
-  </div>
-  <div class="skills-grid">
-    <div class="skill-card reveal">
-      <h3><span class="ico">{ }</span> Core .NET</h3>
-      <div class="tags">
-        <span class="tag hot">C#</span><span class="tag hot">.NET</span><span class="tag">.NET Framework</span>
-        <span class="tag">ASP.NET</span><span class="tag hot">ASP.NET Web API</span><span class="tag">ASP.NET MVC</span>
-        <span class="tag">WinForms</span><span class="tag">REST APIs</span>
-      </div>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="kicker-row">
+      <span><span class="dot">●</span> ENGINEERING PORTFOLIO — TECHNICAL SUBMISSION</span>
+      <span>CHENNAI, IN · 12.98°N 80.22°E</span>
     </div>
-    <div class="skill-card reveal">
-      <h3><span class="ico">☁</span> Azure Cloud</h3>
-      <div class="tags">
-        <span class="tag hot">Microsoft Azure</span><span class="tag">App Configuration</span><span class="tag">Key Vault</span>
-        <span class="tag">Service Bus</span><span class="tag">Event Grid</span><span class="tag">Azure Functions</span>
-        <span class="tag">Azure AI Search</span><span class="tag">Microsoft Entra ID</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <h3><span class="ico">🗄</span> Data & Access</h3>
-      <div class="tags">
-        <span class="tag hot">SQL Server</span><span class="tag">T-SQL</span><span class="tag">Stored Procedures</span>
-        <span class="tag">Dapper</span><span class="tag">Entity Framework</span><span class="tag">NHibernate</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <h3><span class="ico">⇄</span> DevOps & Tools</h3>
-      <div class="tags">
-        <span class="tag hot">Azure DevOps</span><span class="tag">CI/CD</span><span class="tag">Git</span>
-        <span class="tag">Code Review</span><span class="tag">Agile / Scrum</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <h3><span class="ico">▲</span> Architecture</h3>
-      <div class="tags">
-        <span class="tag hot">Application Modernization</span><span class="tag">Software Architecture</span>
-        <span class="tag">Cloud Architecture</span><span class="tag">API Architecture</span>
-        <span class="tag">Modular Monolith</span><span class="tag">System Integration</span><span class="tag">Event-Driven Design</span>
-      </div>
-    </div>
-    <div class="skill-card reveal">
-      <h3><span class="ico">★</span> Leadership</h3>
-      <div class="tags">
-        <span class="tag hot">Technical Leadership</span><span class="tag">Mentoring</span>
-        <span class="tag">Sprint Planning</span><span class="tag">Estimation</span>
-        <span class="tag">Stakeholder Collaboration</span><span class="tag">Root-Cause Analysis</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="sec-head reveal">
-    <p class="sec-kicker">03. work --history</p>
-    <h2 class="sec-title">Experience</h2>
-  </div>
-  <div class="timeline">
-
-    <div class="tl-item reveal">
-      <div class="tl-card">
-        <div class="tl-head">
-          <div>
-            <div class="tl-role">Principal Engineer II · Technical Lead</div>
-            <div class="tl-company">LogicValley Technologies Pvt Ltd</div>
-          </div>
-          <div class="tl-meta">
-            <span class="badge">Full-time · On-site</span><br/>
-            Oct 2022 — Sep 2026 · 4 yrs<br/>Chennai, Tamil Nadu
-          </div>
+    <div class="hero-grid">
+      <div>
+        <h1 class="title">Aravind<br/><span class="outline">A.</span></h1>
+        <div class="role-row">
+          <span class="lead">PRINCIPAL ENGINEER II</span>
+          <span>× TECHNICAL LEAD</span>
         </div>
-        <ul class="tl-bullets">
-          <li>Played a key technical role in the <strong style="color:var(--text)">Columbus enterprise application modernization</strong> — legacy .NET Framework apps, modern .NET APIs, SQL Server, and Azure services.</li>
-          <li>Contributed to modern API architecture: Experience/Client APIs, a Core API Engine, and domain capabilities for Case, Financial, Workflow, Payment, Communications, Documents, Identity, and Reference.</li>
-          <li>Migrated legacy to modern .NET — mapped dependencies and business rules, and replaced legacy SOAP/service dependencies with modern API integrations.</li>
-          <li>Moved legacy authentication toward <strong style="color:var(--text)">Microsoft Entra ID</strong> and centralized config/secrets with Azure App Configuration and Key Vault.</li>
-        </ul>
-        <details class="more">
-          <summary>show 11 more</summary>
-          <ul class="tl-bullets">
-            <li>Built event-driven cloud integration with Azure Service Bus, Event Grid, Azure Functions, and Azure AI Search.</li>
-            <li>Modernized data-access and business components using Dapper, NHibernate, Entity Framework, SQL Server, and modern .NET.</li>
-            <li>Led technical analysis of complex workflows: case management, compliance, enforcement, fees, payments, linked cases.</li>
-            <li>Implemented complex database logic with SQL Server stored procedures, data-access layers, transactions, audit, and tuning.</li>
-            <li>Shaped architecture decisions: modular monolith design, domain boundaries, permissions, telemetry, integration patterns.</li>
-            <li>Performed code and pull-request reviews, catching implementation issues and architectural concerns early.</li>
-            <li>Partnered with PMs, BAs, QA, Principal Engineers, and developers to turn requirements into technical designs.</li>
-            <li>Owned complex features and production issues end-to-end: root-cause analysis, impact assessment, solution design.</li>
-            <li>Worked with Azure DevOps CI/CD, source control, pull-request reviews, work-item management, and releases.</li>
-            <li>Supported Agile delivery: estimation, task breakdown, sprint planning, and delivery coordination.</li>
-            <li>Took ownership of technically complex features across development, integration, testing, deployment, and production support.</li>
+        <p class="blurb">
+          7+ years engineering enterprise software on the Microsoft stack — <b>C#, .NET, ASP.NET, SQL Server, Azure</b>.
+          I take legacy systems apart, understand them end-to-end, and redraw them as modern,
+          scalable, cloud-native architecture. Legacy in. Blueprint out.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="#asm">View Assembly</a>
+          <a class="btn" href="https://www.linkedin.com/in/aravind-a-52259617b" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn" href="mailto:aravindice56@gmail.com">Email</a>
+        </div>
+        <div class="dim"><span>2019</span><span class="rule"></span><span>2026</span><span class="rule"></span><span>7+ YRS</span></div>
+      </div>
+      <figure class="photo-fig">
+        <div class="stamp">Open to work</div>
+        <div class="crop crop-marks">
+          <img src="photo.jpg" alt="Aravind A — Principal Engineer II" width="300" height="300" />
+        </div>
+        <figcaption class="fig-cap"><span><b>DETAIL A</b> — THE ENGINEER</span><span>SCALE 1:1</span></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- 01 SPECIFICATION -->
+  <section id="spec">
+    <div class="sec-head reveal">
+      <span class="sec-no">01</span>
+      <h2 class="sec-title">Specification</h2>
+      <span class="sec-note">General description of part</span>
+    </div>
+    <div class="spec-grid">
+      <div class="spec-text reveal">
+        <p><b>Principal Engineer II and Technical Lead</b> with 7+ years across enterprise application development, application modernization, cloud technologies, and technical leadership.</p>
+        <p>Core expertise in the <b>Microsoft ecosystem</b> — C#, .NET, ASP.NET, Web APIs, SQL Server, Microsoft Azure, Azure DevOps — applied across the full lifecycle: requirement analysis, technical design, development, code reviews, testing, deployment, production support, and modernization.</p>
+        <p>Recent focus: <b>modernizing large-scale enterprise platforms</b> — legacy technologies redrawn as modern .NET and Azure architectures, with modular API design, App Configuration, Key Vault, Service Bus, Event Grid, Functions, AI Search, CI/CD, and authentication modernization.</p>
+        <p>As a Technical Lead I work with Product Managers, Business Analysts, QA, Principal Engineers, and developers to convert business requirements into practical, maintainable solutions — and I take the hard, messy problems nobody else wants.</p>
+      </div>
+      <aside class="panel reveal">
+        <div class="panel-h"><span>NAMEPLATE</span><span>TABLE I</span></div>
+        <div class="kv">
+          <div class="k">ROLE</div><div class="v">Principal Engineer II</div>
+          <div class="k">ALSO</div><div class="v">Technical Lead</div>
+          <div class="k">LOCATION</div><div class="v">Chennai, TN, India</div>
+          <div class="k">FOCUS</div><div class="v">.NET · Azure · Modernization</div>
+          <div class="k">SERVICE</div><div class="v">2019 — 2026</div>
+          <div class="k">DEGREE</div><div class="v">B.Tech, IT</div>
+          <div class="k">EMAIL</div><div class="v acc">aravindice56@gmail.com</div>
+          <div class="k">STATUS</div><div class="v acc">● AVAILABLE</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 02 PARTS LIST -->
+  <section id="bom">
+    <div class="sec-head reveal">
+      <span class="sec-no">02</span>
+      <h2 class="sec-title">Parts List</h2>
+      <span class="sec-note">Bill of materials — all items field-tested</span>
+    </div>
+    <table class="bom reveal">
+      <thead><tr><th style="width:70px">Item</th><th>Part No.</th><th>Description</th><th style="width:70px">Qty</th></tr></thead>
+      <tbody>
+        <tr class="cat"><td colspan="4">— Class A · Core .NET</td></tr>
+        <tr><td>1</td><td class="pn">CNT-CSHARP</td><td class="desc"><b>C#</b> <span>— primary language, 7+ yrs production</span></td><td class="qty">7+</td></tr>
+        <tr><td>2</td><td class="pn">CNT-DOTNET</td><td class="desc"><b>.NET / ASP.NET / Web API</b> <span>— MVC, REST, WinForms</span></td><td class="qty">7+</td></tr>
+        <tr class="cat"><td colspan="4">— Class B · Azure Cloud</td></tr>
+        <tr><td>3</td><td class="pn">AZR-CORE</td><td class="desc"><b>Microsoft Azure</b> <span>— App Configuration, Key Vault</span></td><td class="qty">4+</td></tr>
+        <tr><td>4</td><td class="pn">AZR-MSG</td><td class="desc"><b>Service Bus · Event Grid · Functions · AI Search</b></td><td class="qty">4+</td></tr>
+        <tr><td>5</td><td class="pn">AZR-ENTRA</td><td class="desc"><b>Microsoft Entra ID</b> <span>— auth modernization</span></td><td class="qty">2+</td></tr>
+        <tr class="cat"><td colspan="4">— Class C · Data</td></tr>
+        <tr><td>6</td><td class="pn">DAT-MSSQL</td><td class="desc"><b>SQL Server</b> <span>— T-SQL, stored procedures, tuning</span></td><td class="qty">7+</td></tr>
+        <tr><td>7</td><td class="pn">DAT-ORMS</td><td class="desc"><b>Dapper · Entity Framework · NHibernate</b></td><td class="qty">4+</td></tr>
+        <tr class="cat"><td colspan="4">— Class D · Delivery</td></tr>
+        <tr><td>8</td><td class="pn">DLV-ADO</td><td class="desc"><b>Azure DevOps</b> <span>— CI/CD, Git, PR review, work items</span></td><td class="qty">4+</td></tr>
+        <tr><td>9</td><td class="pn">ARC-MOD</td><td class="desc"><b>Modernization · Architecture</b> <span>— modular monolith, event-driven, integration</span></td><td class="qty">4+</td></tr>
+        <tr><td>10</td><td class="pn">LDR-TECH</td><td class="desc"><b>Technical Leadership</b> <span>— mentoring, planning, estimation, RCA</span></td><td class="qty">3+</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 03 REVISION HISTORY -->
+  <section id="revs">
+    <div class="sec-head reveal">
+      <span class="sec-no">03</span>
+      <h2 class="sec-title">Revision History</h2>
+      <span class="sec-note">Employment record</span>
+    </div>
+
+    <div class="rev reveal">
+      <div class="rev-head">
+        <span class="rev-tag">REV B</span>
+        <span class="rev-title">Principal Engineer II · Technical Lead</span>
+        <span class="rev-org">LogicValley Technologies</span>
+        <span class="rev-date">OCT 2022 — SEP 2026 · 4 YRS · CHENNAI</span>
+      </div>
+      <div class="rev-body">
+        <div>
+          <ul>
+            <li>Key technical role in the <b>Columbus enterprise modernization</b> — legacy .NET Framework apps, modern .NET APIs, SQL Server, Azure services.</li>
+            <li>Designed modern API architecture: Experience/Client APIs, Core API Engine, domain capabilities for Case, Financial, Workflow, Payment, Communications, Documents, Identity, Reference.</li>
+            <li>Migrated legacy to modern .NET — mapped dependencies, replaced SOAP/service dependencies with API integrations.</li>
+            <li>Moved authentication to <b>Microsoft Entra ID</b>; centralized config/secrets with App Configuration + Key Vault.</li>
           </ul>
-        </details>
-      </div>
-    </div>
-
-    <div class="tl-item reveal">
-      <div class="tl-card">
-        <div class="tl-head">
-          <div>
-            <div class="tl-role">Software Engineer</div>
-            <div class="tl-company">Hitech Software Solutions — India</div>
-          </div>
-          <div class="tl-meta">
-            <span class="badge">Full-time · On-site</span><br/>
-            Aug 2019 — Sep 2022 · 3 yrs 2 mos<br/>Chennai, Tamil Nadu
-          </div>
+          <details class="more">
+            <summary>Full change log — 11 items</summary>
+            <ul>
+              <li>Event-driven integration: Service Bus, Event Grid, Functions, AI Search.</li>
+              <li>Modernized data access with Dapper, NHibernate, EF, SQL Server, modern .NET.</li>
+              <li>Technical analysis of complex workflows: case management, compliance, enforcement, fees, payments, linked cases.</li>
+              <li>Complex database logic: stored procedures, data layers, transactions, audit, performance.</li>
+              <li>Architecture decisions: modular monolith, domain boundaries, permissions, telemetry.</li>
+              <li>Code & PR reviews — catching design issues early.</li>
+              <li>Partnered with PMs, BAs, QA, Principal Engineers on technical designs.</li>
+              <li>Owned features and production issues end-to-end — RCA, impact, solution design.</li>
+              <li>Azure DevOps CI/CD, source control, releases, work-item management.</li>
+              <li>Agile delivery: estimation, breakdown, sprint planning, coordination.</li>
+              <li>End-to-end ownership across dev, integration, testing, deployment, support.</li>
+            </ul>
+          </details>
         </div>
-        <ul class="tl-bullets">
-          <li>Developed and maintained enterprise software using C#, .NET, ASP.NET, and SQL Server.</li>
-          <li>Owned features across the full SDLC: requirement analysis, development, debugging, testing, deployment, and production support.</li>
-          <li>Delivered client projects including a CAD plugin/BoM generation system (C#, Revit) for a French multinational and an ASP.NET/MS SQL digitalization platform for a biotech company.</li>
-          <li>Resolved defects and production issues through structured troubleshooting and root-cause analysis.</li>
-          <li>Worked in Agile/Scrum with sprint-based delivery and work-item tracking.</li>
+        <div class="rev-side">
+          <div class="row"><span class="k">TYPE</span><span>Full-time · On-site</span></div>
+          <div class="row"><span class="k">DOMAIN</span><span>Case mgmt / Enforcement</span></div>
+          <div class="row"><span class="k">STACK</span><span>.NET · SQL · Azure</span></div>
+          <div class="row"><span class="k">APPROVED</span><span style="color:var(--accent-ink)">✓ SEP 2026</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rev reveal">
+      <div class="rev-head">
+        <span class="rev-tag">REV A</span>
+        <span class="rev-title">Software Engineer</span>
+        <span class="rev-org">Hitech Software Solutions</span>
+        <span class="rev-date">AUG 2019 — SEP 2022 · 3 YRS 2 MOS · CHENNAI</span>
+      </div>
+      <div class="rev-body">
+        <div>
+          <ul>
+            <li>Developed and maintained enterprise software with <b>C#, .NET, ASP.NET, SQL Server</b>.</li>
+            <li>Full SDLC ownership: analysis, development, debugging, testing, deployment, production support.</li>
+            <li>Delivered client platforms for a <b>French multinational</b> (CAD automation) and a <b>biotech company</b> (digitalization) — see Sub-Assemblies 05.</li>
+            <li>Root-cause analysis on defects and production issues; Agile/Scrum delivery.</li>
+          </ul>
+        </div>
+        <div class="rev-side">
+          <div class="row"><span class="k">TYPE</span><span>Full-time · On-site</span></div>
+          <div class="row"><span class="k">CLIENTS</span><span>Saint-Gobain · Spinco</span></div>
+          <div class="row"><span class="k">STACK</span><span>C# · ASP.NET · SQL</span></div>
+          <div class="row"><span class="k">STATUS</span><span>SUPERSEDED BY REV B</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 ASSEMBLY -->
+  <section id="asm">
+    <div class="sec-head reveal">
+      <span class="sec-no">04</span>
+      <h2 class="sec-title">Assembly — Flagship</h2>
+      <span class="sec-note">Main system modernization</span>
+    </div>
+    <div class="assembly reveal">
+      <div class="mono" style="font-size:.72rem; letter-spacing:.12em; color:var(--accent-ink)">ASSEMBLY DWG — COLUMBUS ENTERPRISE PLATFORM</div>
+      <h3 class="asm-title">Legacy → Blueprint Transformation</h3>
+      <p class="lead">
+        Large-scale enterprise case-management and enforcement platform — case, compliance, enforcement,
+        financial, payment, workflow, document and communication processes. I served as Principal Engineer II /
+        Technical Lead on its modernization: transitioning legacy .NET Framework and SOAP-based applications to
+        modern .NET APIs and Azure architecture — incrementally, without disrupting live operations.
+      </p>
+      <div class="flow">
+        <div class="stage"><div class="no">STAGE 1</div><div class="nm">Legacy .NET Framework</div><div class="ds">CWA/CDA-style apps, SOAP services</div></div>
+        <div class="stage"><div class="no">STAGE 2</div><div class="nm">Experience / Client APIs</div><div class="ds">Modern REST surface</div></div>
+        <div class="stage"><div class="no">STAGE 3</div><div class="nm">Core API Engine</div><div class="ds">Domain-oriented backbone</div></div>
+        <div class="stage"><div class="no">STAGE 4</div><div class="nm">Domain Capabilities</div><div class="ds">Case · Financial · Workflow · Payment · Identity</div></div>
+      </div>
+      <div class="asm-meta">
+        <div class="cell"><div class="k">Role</div><div class="v">Principal Eng II · Tech Lead</div></div>
+        <div class="cell"><div class="k">Stack</div><div class="v">C# · .NET · SQL · Dapper · EF</div></div>
+        <div class="cell"><div class="k">Azure</div><div class="v">Config · Vault · Bus · Grid · Fn · AI Search</div></div>
+        <div class="cell"><div class="k">Practices</div><div class="v">Modular monolith · CI/CD · DDD boundaries</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 SUB-ASSEMBLIES -->
+  <section id="subs">
+    <div class="sec-head reveal">
+      <span class="sec-no">05</span>
+      <h2 class="sec-title">Sub-Assemblies</h2>
+      <span class="sec-note">Client projects @ Hitech</span>
+    </div>
+    <div class="sub-grid">
+      <div class="sub-card reveal">
+        <div class="pn">S/A — SG-001</div>
+        <h3>Saint-Gobain · CAD Automation Suite</h3>
+        <div class="meta">DEC 2019 — 2022 · C# · SQLITE · EXCEL INTEROP</div>
+        <p>Custom tooling for the French multinational — the world's largest mirror manufacturer — used daily by design teams inside CAD workflows.</p>
+        <ul>
+          <li>Custom CAD plugins and Ribbon panels in C#.</li>
+          <li>Automated Bill of Materials generation via Excel + C#.</li>
+          <li>Business processes distributing sample quality/performance data.</li>
+          <li>Daily Scrum and weekly reviews with client stakeholders.</li>
         </ul>
+        <div class="chip-row">
+          <span class="chip hot">C#</span><span class="chip">.NET</span><span class="chip">SQLite</span><span class="chip">Excel Interop</span><span class="chip">CAD Plugins</span>
+        </div>
+      </div>
+      <div class="sub-card reveal">
+        <div class="pn">S/A — SB-002</div>
+        <h3>Spinco Biotech · Digitalization Platform</h3>
+        <div class="meta">DEC 2019 — DEC 2020 · ASP.NET · MS SQL</div>
+        <p>End-to-end web platform for a life-science instrumentation partner — moving staff, customer and purchase-order operations online.</p>
+        <ul>
+          <li>Digitalized staff, customer and purchase-order records.</li>
+          <li>Automatic invoice generation for purchase orders.</li>
+          <li>User-role management and authentication.</li>
+          <li>EXPLAIN PLAN query tuning; asset management on MS SQL.</li>
+        </ul>
+        <div class="chip-row">
+          <span class="chip hot">ASP.NET</span><span class="chip">MS SQL</span><span class="chip">Query Tuning</span><span class="chip">Auth / RBAC</span>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- PROJECT -->
-<section id="project">
-  <div class="sec-head reveal">
-    <p class="sec-kicker">04. flagship</p>
-    <h2 class="sec-title">Featured Project</h2>
-  </div>
-  <div class="project-card reveal">
-    <p class="p-kicker">// enterprise modernization at LogicValley</p>
-    <h3>Columbus Enterprise Platform — Modernization & Azure Transformation</h3>
-    <p>
-      A large-scale enterprise case-management and enforcement platform handling case, compliance, enforcement,
-      financial, payment, workflow, document, and communication processes. I worked as a Principal Engineer II /
-      Technical Lead on modernizing the platform — transitioning legacy .NET Framework and SOAP-based applications
-      toward modern .NET APIs and Azure-based architecture, incrementally and without disrupting live enterprise functionality.
-    </p>
-    <div class="arch-flow">
-      <span class="arch-box">Legacy .NET Framework apps</span>
-      <span class="arch-arrow">→</span>
-      <span class="arch-box">Experience / Client APIs</span>
-      <span class="arch-arrow">→</span>
-      <span class="arch-box">Core API Engine</span>
-      <span class="arch-arrow">→</span>
-      <span class="arch-box">Domain capabilities</span>
+  <!-- 06 GENERAL NOTES -->
+  <section id="notes">
+    <div class="sec-head reveal">
+      <span class="sec-no">06</span>
+      <h2 class="sec-title">General Notes</h2>
+      <span class="sec-note">Education & availability</span>
     </div>
-    <div class="project-meta">
-      <div class="pm"><div class="pm-k">role</div><div class="pm-v">Principal Engineer II · Technical Lead</div></div>
-      <div class="pm"><div class="pm-k">stack</div><div class="pm-v">C# · .NET · SQL Server · Dapper · EF · NHibernate</div></div>
-      <div class="pm"><div class="pm-k">azure</div><div class="pm-v">App Config · Key Vault · Service Bus · Event Grid · Functions · AI Search · Entra ID</div></div>
-      <div class="pm"><div class="pm-k">practices</div><div class="pm-v">Modular monolith · CI/CD · Code review · Domain-driven boundaries</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CLIENT PROJECTS -->
-<section id="projects">
-  <div class="sec-head reveal">
-    <p class="sec-kicker">05. projects --client</p>
-    <h2 class="sec-title">Client Projects</h2>
-  </div>
-  <div class="proj-grid">
-
-    <div class="proj-card reveal">
-      <p class="proj-kicker">// client project · manufacturing · @ Hitech</p>
-      <h3>Saint-Gobain — CAD Automation Suite</h3>
-      <div class="proj-meta">Dec 2019 — 2022 · C# · SQLite · Excel Interop</div>
-      <p>
-        Custom automation for Saint-Gobain, the French multinational and the world's largest
-        mirror manufacturer — the tooling their design teams used daily inside CAD workflows.
-      </p>
-      <ul class="tl-bullets">
-        <li>Created custom CAD plugins and Ribbon panels in C# tailored to client requirements.</li>
-        <li>Built automated Bill of Materials (BoM) generation using Excel and C#.</li>
-        <li>Developed business processes to distribute sample quality and performance data.</li>
-        <li>Worked directly with client stakeholders through daily Scrum and weekly status reviews.</li>
-      </ul>
-      <div class="tags">
-        <span class="tag hot">C#</span><span class="tag">.NET</span><span class="tag">SQLite</span>
-        <span class="tag">Excel Interop</span><span class="tag">CAD Plugins</span>
+    <div class="notes">
+      <div class="panel reveal">
+        <div class="panel-h"><span>NOTES</span><span>UNLESS OTHERWISE SPECIFIED</span></div>
+        <ol>
+          <li><b>Education:</b> B.Tech, Information Technology — Anna University, BIT Campus, Tiruchirappalli. 2015–2019 · GPA 6.9/10.</li>
+          <li><b>Interpretation:</b> All legacy systems to be treated with respect; understand before redraw.</li>
+          <li><b>Tolerance:</b> Production-grade only. No shortcuts on security, audit, or maintainability.</li>
+          <li><b>Finish:</b> Modern, scalable, cloud-native architectures preferred.</li>
+        </ol>
+      </div>
+      <div class="panel reveal">
+        <div class="panel-h"><span>TARGET ROLES</span><span>FULL-TIME</span></div>
+        <div class="roles-wrap">
+          <div class="roles">
+            <span class="chip hot">Principal Software Engineer</span>
+            <span class="chip hot">Technical Lead</span>
+            <span class="chip">Senior Software Engineer</span>
+            <span class="chip">Senior .NET Developer</span>
+            <span class="chip">Software Architect</span>
+            <span class="chip">Azure Technical Lead</span>
+            <span class="chip">Backend Engineer</span>
+          </div>
+          <p class="mono" style="font-size:.74rem; color:var(--ink-soft); margin-top:14px;">LOCATION: CHENNAI · ON-SITE / HYBRID · IMMEDIATE</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="proj-card reveal">
-      <p class="proj-kicker">// client project · life sciences · @ Hitech</p>
-      <h3>Spinco Biotech — Enterprise Digitalization Platform</h3>
-      <div class="proj-meta">Dec 2019 — Dec 2020 · ASP.NET · MS SQL</div>
-      <p>
-        End-to-end digitalization platform for a leading analytical &amp; life-science
-        instrumentation partner — moving staff, customer, and purchase-order operations to the web.
-      </p>
-      <ul class="tl-bullets">
-        <li>Digitalized staff details, customer records, and purchase-order management.</li>
-        <li>Built automatic invoice generation for purchase orders.</li>
-        <li>Implemented user-role management and authentication across the platform.</li>
-        <li>Tuned slow queries with EXPLAIN PLAN analysis and managed assets on MS SQL Server.</li>
-      </ul>
-      <div class="tags">
-        <span class="tag hot">ASP.NET</span><span class="tag">MS SQL</span>
-        <span class="tag">Query Tuning</span><span class="tag">Auth / RBAC</span>
-      </div>
+  <!-- 07 APPROVALS -->
+  <section id="contact" style="border-bottom:none;">
+    <div class="sec-head reveal">
+      <span class="sec-no">07</span>
+      <h2 class="sec-title">Approvals</h2>
+      <span class="sec-note">Sign off below</span>
     </div>
-
-  </div>
-</section>
-
-<!-- EDUCATION + OPEN TO -->
-<section>
-  <div class="sec-head reveal">
-    <p class="sec-kicker">06. background</p>
-    <h2 class="sec-title">Education & Focus</h2>
-  </div>
-  <div class="two-col">
-    <div class="panel reveal">
-      <h3>🎓 Education</h3>
-      <div class="edu-deg">Bachelor of Technology (B.Tech) — Information Technology</div>
-      <div class="edu-inst">Anna University — BIT Campus, Tiruchirappalli</div>
-      <div class="edu-meta">2015 — 2019 · Graduated June 2019 · GPA 6.9/10</div>
+    <div class="approve-grid">
+      <a class="sign-block reveal" href="mailto:aravindice56@gmail.com">
+        <span class="arrow">↗</span>
+        <div class="lbl">Approved by — Email</div>
+        <div class="val">aravindice56@gmail.com</div>
+        <div class="sig-line"><span>SIGNATURE</span><span>DATE</span></div>
+      </a>
+      <a class="sign-block reveal" href="https://www.linkedin.com/in/aravind-a-52259617b" target="_blank" rel="noopener">
+        <span class="arrow">↗</span>
+        <div class="lbl">Reviewed by — LinkedIn</div>
+        <div class="val">/in/aravind-a-52259617b</div>
+        <div class="sig-line"><span>SIGNATURE</span><span>DATE</span></div>
+      </a>
     </div>
-    <div class="panel reveal">
-      <h3>🎯 Open to Roles</h3>
-      <div class="roles">
-        <span class="tag hot">Principal Software Engineer</span>
-        <span class="tag hot">Technical Lead</span>
-        <span class="tag">Senior Software Engineer</span>
-        <span class="tag">Senior .NET Developer</span>
-        <span class="tag">Software Architect</span>
-        <span class="tag">Azure Technical Lead</span>
-        <span class="tag">Backend Engineer</span>
-        <span class="tag">Application Modernization</span>
-      </div>
-      <p style="color:var(--muted); font-size:.9rem; margin-top:1rem;">
-        Full-time · Chennai (on-site or hybrid) · Available immediately
-      </p>
+  </section>
+
+  <!-- TITLE BLOCK -->
+  <div class="tblock">
+    <div class="grid5">
+      <div class="cell"><div class="k">Title</div><div class="v">Portfolio — Aravind A</div></div>
+      <div class="cell"><div class="k">Drawn by</div><div class="v">A. ARAVIND</div></div>
+      <div class="cell"><div class="k">Date</div><div class="v mono">2026-09-26</div></div>
+      <div class="cell"><div class="k">Scale</div><div class="v mono">1:1</div></div>
+      <div class="cell"><div class="k">Rev</div><div class="v mono">C · SHEET 1/1</div></div>
     </div>
   </div>
-</section>
 
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="sec-head reveal" style="text-align:center;">
-    <p class="sec-kicker">07. contact</p>
-    <h2 class="sec-title">Let's Talk</h2>
-  </div>
-  <p class="reveal">
-    Hiring for a .NET/Azure role, modernizing a legacy platform, or just want to talk architecture?
-    My inbox is always open.
-  </p>
-  <div class="contact-actions reveal">
-    <a class="btn btn-primary" href="mailto:aravindice56@gmail.com">aravindice56@gmail.com</a>
-    <a class="btn btn-ghost" href="https://www.linkedin.com/in/aravind-a-52259617b" target="_blank" rel="noopener">LinkedIn ↗</a>
-  </div>
-</section>
-
-<footer>
-  built with <span class="heart">&lt;3</span> by Aravind A · .NET & Azure · Chennai, India · 2026
-</footer>
+</div>
 
 <script>
-  // theme toggle with persistence
-  const themeBtn = document.getElementById('themeToggle');
+  // theme: paper <-> blueprint, persisted
+  const btn = document.getElementById('themeToggle');
   const root = document.documentElement;
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') { root.setAttribute('data-theme', 'light'); themeBtn.textContent = '☀️'; }
-  themeBtn.addEventListener('click', () => {
-    const light = root.getAttribute('data-theme') === 'light';
-    if (light) { root.removeAttribute('data-theme'); localStorage.setItem('theme', 'dark'); themeBtn.textContent = '🌙'; }
-    else { root.setAttribute('data-theme', 'light'); localStorage.setItem('theme', 'light'); themeBtn.textContent = '☀️'; }
+  const saved = localStorage.getItem('dwg-theme');
+  if (saved === 'blueprint') { root.setAttribute('data-theme','blueprint'); btn.textContent = 'Paper'; }
+  btn.addEventListener('click', () => {
+    const bp = root.getAttribute('data-theme') === 'blueprint';
+    if (bp) { root.setAttribute('data-theme','paper'); localStorage.setItem('dwg-theme','paper'); btn.textContent='Blueprint'; }
+    else { root.setAttribute('data-theme','blueprint'); localStorage.setItem('dwg-theme','blueprint'); btn.textContent='Paper'; }
   });
 
-  // scroll reveal
-  const io = new IntersectionObserver((entries) => {
-    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-  }, { threshold: 0.12 });
+  // reveal
+  const io = new IntersectionObserver(es => {
+    for (const e of es) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }, { threshold: .1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // scroll progress bar
+  // progress
   const bar = document.getElementById('progress');
   addEventListener('scroll', () => {
     const h = document.documentElement;
