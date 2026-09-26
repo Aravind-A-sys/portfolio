@@ -218,6 +218,27 @@
   .pm .pm-k { font-family: var(--mono); font-size: .78rem; color: var(--accent); margin-bottom: .3rem; }
   .pm .pm-v { color: var(--muted); font-size: .9rem; }
 
+  /* ---------- CLIENT PROJECTS ---------- */
+  .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.6rem; }
+  .proj-card {
+    background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+    padding: 1.8rem; display: flex; flex-direction: column; gap: .85rem;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+    position: relative; overflow: hidden;
+  }
+  .proj-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(320px 150px at 100% 0%, rgba(34, 211, 238, .07), transparent);
+    pointer-events: none;
+  }
+  .proj-card:hover { transform: translateY(-5px); border-color: rgba(34, 211, 238, .55); box-shadow: 0 12px 34px rgba(0,0,0,.35); }
+  .proj-kicker { font-family: var(--mono); font-size: .8rem; color: var(--accent-2); }
+  .proj-card h3 { font-size: 1.25rem; }
+  .proj-meta { font-family: var(--mono); font-size: .8rem; color: var(--muted); }
+  .proj-card p { color: var(--muted); font-size: .95rem; }
+  .proj-card .tl-bullets { margin: 0; }
+  .proj-card .tags { margin-top: auto; padding-top: .4rem; }
+
   /* ---------- EDUCATION + OPEN TO ---------- */
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
   @media (max-width: 860px) { .two-col { grid-template-columns: 1fr; } }
@@ -251,7 +272,8 @@
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#project">Project</a></li>
+    <li><a href="#project">Featured</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a class="nav-cta" href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -468,10 +490,61 @@
   </div>
 </section>
 
+<!-- CLIENT PROJECTS -->
+<section id="projects">
+  <div class="sec-head reveal">
+    <p class="sec-kicker">05. projects --client</p>
+    <h2 class="sec-title">Client Projects</h2>
+  </div>
+  <div class="proj-grid">
+
+    <div class="proj-card reveal">
+      <p class="proj-kicker">// client project · manufacturing · @ Hitech</p>
+      <h3>Saint-Gobain — CAD Automation Suite</h3>
+      <div class="proj-meta">Dec 2019 — 2022 · C# · SQLite · Excel Interop</div>
+      <p>
+        Custom automation for Saint-Gobain, the French multinational and the world's largest
+        mirror manufacturer — the tooling their design teams used daily inside CAD workflows.
+      </p>
+      <ul class="tl-bullets">
+        <li>Created custom CAD plugins and Ribbon panels in C# tailored to client requirements.</li>
+        <li>Built automated Bill of Materials (BoM) generation using Excel and C#.</li>
+        <li>Developed business processes to distribute sample quality and performance data.</li>
+        <li>Worked directly with client stakeholders through daily Scrum and weekly status reviews.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag hot">C#</span><span class="tag">.NET</span><span class="tag">SQLite</span>
+        <span class="tag">Excel Interop</span><span class="tag">CAD Plugins</span>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <p class="proj-kicker">// client project · life sciences · @ Hitech</p>
+      <h3>Spinco Biotech — Enterprise Digitalization Platform</h3>
+      <div class="proj-meta">Dec 2019 — Dec 2020 · ASP.NET · MS SQL</div>
+      <p>
+        End-to-end digitalization platform for a leading analytical &amp; life-science
+        instrumentation partner — moving staff, customer, and purchase-order operations to the web.
+      </p>
+      <ul class="tl-bullets">
+        <li>Digitalized staff details, customer records, and purchase-order management.</li>
+        <li>Built automatic invoice generation for purchase orders.</li>
+        <li>Implemented user-role management and authentication across the platform.</li>
+        <li>Tuned slow queries with EXPLAIN PLAN analysis and managed assets on MS SQL Server.</li>
+      </ul>
+      <div class="tags">
+        <span class="tag hot">ASP.NET</span><span class="tag">MS SQL</span>
+        <span class="tag">Query Tuning</span><span class="tag">Auth / RBAC</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- EDUCATION + OPEN TO -->
 <section>
   <div class="sec-head reveal">
-    <p class="sec-kicker">05. background</p>
+    <p class="sec-kicker">06. background</p>
     <h2 class="sec-title">Education & Focus</h2>
   </div>
   <div class="two-col">
@@ -503,7 +576,7 @@
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="sec-head reveal" style="text-align:center;">
-    <p class="sec-kicker">06. contact</p>
+    <p class="sec-kicker">07. contact</p>
     <h2 class="sec-title">Let's Talk</h2>
   </div>
   <p class="reveal">
